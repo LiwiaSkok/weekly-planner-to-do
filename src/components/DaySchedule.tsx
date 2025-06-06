@@ -116,13 +116,24 @@ export default function DaySchedule({
 
             {/* Szczegóły zadania: godziny + tytuł */}
             <div className="flex-1 min-w-0">
+              {/* 🆕 Godziny + czas trwania: różne układy na mobile/desktop */}
               <div
                 className={`text-base ${
                   isChecked ? "line-through text-gray-400" : "text-gray-500"
                 }`}
               >
-                {task.start}–{task.end} ({getDurationText(task.start, task.end)})
+                {/* Na mobilu: godziny i czas trwania w osobnych liniach */}
+                <div className="block sm:hidden">
+                  <div>{task.start}–{task.end}</div>
+                  <div>({getDurationText(task.start, task.end)})</div>
+                </div>
+
+                {/* Na desktopie: razem w jednej linii */}
+                <div className="hidden sm:block">
+                  {task.start}–{task.end} ({getDurationText(task.start, task.end)})
+                </div>
               </div>
+
               <div
                 className={`text-2xl font-semibold ${
                   isChecked ? "line-through text-gray-400" : ""
@@ -130,25 +141,10 @@ export default function DaySchedule({
               >
                 {task.title}
               </div>
-            </div>
 
-            {/* Odhaczanie, Edytuj i Usuń */}
-            <div className="flex items-center gap-2 mt-2">
-              {/* Kółko do odhaczania */}
-              <div
-                onClick={(e) => {
-                  e.stopPropagation();
-                  toggleCheck(task.id);
-                }}
-                className="w-6 h-6 border-2 rounded-full cursor-pointer"
-                style={{
-                  borderColor: task.color,
-                  backgroundColor: isChecked ? task.color : "transparent",
-                }}
-              />
-              {/* Pokazuję przyciski tylko dla aktywnego zadania */}
+              {/* 🆕 Przyciski edycji/usuwania tylko na mobilu – na dole */}
               {activeTaskId === task.id && (
-                <>
+                <div className="block sm:hidden flex gap-2 mt-4">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
@@ -169,7 +165,48 @@ export default function DaySchedule({
                   >
                     Usuń
                   </button>
-                </>
+                </div>
+              )}
+            </div>
+
+            {/* Odhaczanie, Edytuj i Usuń – checkbox zostaje na górze */}
+            <div className="flex items-center gap-2 mt-2 sm:mt-0">
+              {/* Kółko do odhaczania */}
+              <div
+                onClick={(e) => {
+                  e.stopPropagation();
+                  toggleCheck(task.id);
+                }}
+                className="w-6 h-6 border-2 rounded-full cursor-pointer"
+                style={{
+                  borderColor: task.color,
+                  backgroundColor: isChecked ? task.color : "transparent",
+                }}
+              />
+              {/* Pokazuję przyciski tylko na desktopie */}
+              {activeTaskId === task.id && (
+                <div className="hidden sm:flex items-center gap-2">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onEdit(task.id);
+                    }}
+                    className="text-white px-3 py-1 rounded text-sm shadow hover:opacity-90"
+                    style={{ backgroundColor: task.color }}
+                  >
+                    Edytuj
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      deleteTask(task.id);
+                    }}
+                    className="text-white px-3 py-1 rounded text-sm shadow hover:opacity-90"
+                    style={{ backgroundColor: task.color }}
+                  >
+                    Usuń
+                  </button>
+                </div>
               )}
             </div>
           </div>
