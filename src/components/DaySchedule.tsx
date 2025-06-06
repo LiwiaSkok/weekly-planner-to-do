@@ -19,18 +19,21 @@ export default function DaySchedule({
   const [activeTaskId, setActiveTaskId] = useState<string | null>(null);
   const [checkedTasks, setCheckedTasks] = useState<string[]>([]);
 
+  // Przełączanie odhaczenia zadania
   const toggleCheck = (id: string) => {
     setCheckedTasks((prev) =>
       prev.includes(id) ? prev.filter((tid) => tid !== id) : [...prev, id]
     );
   };
 
+  // Parsowanie czasu (np. "09:00") na minuty od północy
   const parseTime = (time: string | null | undefined) => {
     if (!time || !time.includes(":")) return 0;
     const [h, m] = time.split(":").map(Number);
     return h * 60 + m;
   };
 
+  // Sortuję zadania według godziny rozpoczęcia, a potem długości
   const sortedTasks = [...tasks].sort((a, b) => {
     const startA = parseTime(a.start);
     const startB = parseTime(b.start);
@@ -40,6 +43,7 @@ export default function DaySchedule({
     return durationA - durationB;
   });
 
+  // Opisuję czas trwania jako np. "1 godz. i 30 min"
   const getDurationText = (start: string, end: string) => {
     const dur = parseTime(end) - parseTime(start);
     const h = Math.floor(dur / 60);
@@ -49,6 +53,7 @@ export default function DaySchedule({
     return `${m} min`;
   };
 
+  // Usuwanie zadania z potwierdzeniem
   const deleteTask = async (id: string) => {
     const confirmed = confirm("Czy na pewno chcesz usunąć to zadanie?");
     if (!confirmed) return;
@@ -71,6 +76,7 @@ export default function DaySchedule({
         const endMin = parseTime(task.end);
         const duration = endMin - startMin;
 
+        // Obliczam wysokość słupka na podstawie długości zadania
         const getVisualHeight = (duration: number) => {
           if (duration <= 15) return 48;
           return Math.min(40 + Math.sqrt(duration) * 10.0, 300);
@@ -83,20 +89,21 @@ export default function DaySchedule({
         return (
           <div
             key={task.id}
-            className="flex items-center gap-6 cursor-pointer relative"
+            // 🔄 Zmieniono układ: flex-wrap pozwala zawijać elementy na małych ekranach
+            className="flex flex-wrap sm:flex-nowrap items-start gap-4 sm:gap-6 cursor-pointer relative"
             onClick={() =>
               setActiveTaskId(activeTaskId === task.id ? null : task.id)
             }
           >
             {/* Godzina rozpoczęcia */}
-            <div className="w-24 text-right text-base text-gray-600 flex flex-col items-end">
+            <div className="min-w-[56px] text-right text-base text-gray-600 flex flex-col items-end">
               <span>{task.start}</span>
             </div>
 
             {/* Pasek kolorowy reprezentujący zadanie */}
-            <div className="relative w-16 flex justify-center">
+            <div className="relative min-w-[40px] flex justify-center">
               <div
-                className={`w-12 shadow ${
+                className={`w-10 shadow ${
                   isShortTask ? "rounded-full" : "rounded-t-full rounded-b-full"
                 }`}
                 style={{
@@ -108,7 +115,7 @@ export default function DaySchedule({
             </div>
 
             {/* Szczegóły zadania: godziny + tytuł */}
-            <div className="flex-1">
+            <div className="flex-1 min-w-0">
               <div
                 className={`text-base ${
                   isChecked ? "line-through text-gray-400" : "text-gray-500"
@@ -127,6 +134,7 @@ export default function DaySchedule({
 
             {/* Odhaczanie, Edytuj i Usuń */}
             <div className="flex items-center gap-2 mt-2">
+              {/* Kółko do odhaczania */}
               <div
                 onClick={(e) => {
                   e.stopPropagation();
@@ -138,6 +146,7 @@ export default function DaySchedule({
                   backgroundColor: isChecked ? task.color : "transparent",
                 }}
               />
+              {/* Pokazuję przyciski tylko dla aktywnego zadania */}
               {activeTaskId === task.id && (
                 <>
                   <button
