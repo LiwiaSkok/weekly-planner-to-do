@@ -1,6 +1,11 @@
-# Aplikacja do planowania tygodnia stworzona w Next.js, TypeScript, Prisma i PostgreSQL. Wdrożona na platformie Render.
+# .Organizee
 
-# Aplikacja dostępna pod adresem:
+Aplikacja do planowania tygodnia, stworzona z wykorzystaniem **Next.js**, **TypeScript**, **Prisma** oraz **PostgreSQL**.  
+Stylowana przy użyciu **Tailwind CSS** i wdrożona w chmurze dzięki platformie **Render**.
 
-> https://weekly-planner-to-do.onrender.com/
+---
+
+Aplikacja dostępna pod adresem:
+
+> 🔗 https://weekly-planner-to-do.onrender.com/
 
