@@ -89,7 +89,6 @@ export default function DaySchedule({
         return (
           <div
             key={task.id}
-            // 🔄 Zmieniono układ: flex-wrap pozwala zawijać elementy na małych ekranach
             className="flex flex-wrap sm:flex-nowrap items-start gap-4 sm:gap-6 cursor-pointer relative"
             onClick={() =>
               setActiveTaskId(activeTaskId === task.id ? null : task.id)
@@ -114,21 +113,19 @@ export default function DaySchedule({
               />
             </div>
 
-            {/* Szczegóły zadania: godziny + tytuł */}
+            {/* Szczegóły zadania */}
             <div className="flex-1 min-w-0">
-              {/* 🆕 Godziny + czas trwania: różne układy na mobile/desktop */}
               <div
                 className={`text-base ${
                   isChecked ? "line-through text-gray-400" : "text-gray-500"
                 }`}
               >
-                {/* Na mobilu: godziny i czas trwania w osobnych liniach */}
+                {/* Mobile: godziny + czas trwania w 2 liniach */}
                 <div className="block sm:hidden">
                   <div>{task.start}–{task.end}</div>
                   <div>({getDurationText(task.start, task.end)})</div>
                 </div>
-
-                {/* Na desktopie: razem w jednej linii */}
+                {/* Desktop: godziny + czas trwania w 1 linii */}
                 <div className="hidden sm:block">
                   {task.start}–{task.end} ({getDurationText(task.start, task.end)})
                 </div>
@@ -142,9 +139,9 @@ export default function DaySchedule({
                 {task.title}
               </div>
 
-              {/* 🆕 Przyciski edycji/usuwania tylko na mobilu – na dole */}
+              {/* Przyciski edytuj/usuń – zawsze na dole, ale tylko po kliknięciu */}
               {activeTaskId === task.id && (
-                <div className="block sm:hidden flex gap-2 mt-4">
+                <div className="flex justify-end gap-2 mt-4">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
@@ -169,9 +166,8 @@ export default function DaySchedule({
               )}
             </div>
 
-            {/* Odhaczanie, Edytuj i Usuń – checkbox zostaje na górze */}
+            {/* Checkbox – zawsze widoczny, z lewej strony */}
             <div className="flex items-center gap-2 mt-2 sm:mt-0">
-              {/* Kółko do odhaczania */}
               <div
                 onClick={(e) => {
                   e.stopPropagation();
@@ -183,31 +179,6 @@ export default function DaySchedule({
                   backgroundColor: isChecked ? task.color : "transparent",
                 }}
               />
-              {/* Pokazuję przyciski tylko na desktopie */}
-              {activeTaskId === task.id && (
-                <div className="hidden sm:flex items-center gap-2">
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onEdit(task.id);
-                    }}
-                    className="text-white px-3 py-1 rounded text-sm shadow hover:opacity-90"
-                    style={{ backgroundColor: task.color }}
-                  >
-                    Edytuj
-                  </button>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      deleteTask(task.id);
-                    }}
-                    className="text-white px-3 py-1 rounded text-sm shadow hover:opacity-90"
-                    style={{ backgroundColor: task.color }}
-                  >
-                    Usuń
-                  </button>
-                </div>
-              )}
             </div>
           </div>
         );
