@@ -1,12 +1,12 @@
 import React from "react";
 
 export default function WeekCalendar({
-  selectedDate,       // aktualnie kliknięta data
-  onSelect,           // funkcja wybierająca dzień
-  tasks,              // lista zadań (z datami i kolorami)
-  weekStart,          // pierwszy dzień tygodnia
-  onNextWeek,         // klik → tydzień do przodu
-  onPrevWeek,         // klik ← tydzień do tyłu
+  selectedDate,
+  onSelect,
+  tasks,
+  weekStart,
+  onNextWeek,
+  onPrevWeek,
 }: {
   selectedDate: Date;
   onSelect: (date: Date) => void;
@@ -15,29 +15,19 @@ export default function WeekCalendar({
   onNextWeek: () => void;
   onPrevWeek: () => void;
 }) {
-  // Tworzę tablicę 7 kolejnych dni od weekStart (czyli tydzień)
   const days = Array.from({ length: 7 }, (_, i) => {
     const d = new Date(weekStart);
     d.setDate(d.getDate() + i);
     return d;
   });
 
-  // Formatuję dzień jako np. "pon. 3"
-  const formatDay = (date: Date) =>
-    date
-      .toLocaleDateString("pl-PL", { weekday: "short", day: "numeric" })
-      .replace(",", "");
-
   return (
     <div className="p-4">
-      {/* Pasek nawigacji między tygodniami (strzałki + miesiąc i rok) */}
       <div className="flex justify-between items-center mb-2">
-        {/* Strzałka ← cofanie tygodnia */}
         <button onClick={onPrevWeek} className="text-lg font-bold">
           ←
         </button>
 
-        {/* Wyświetlam miesiąc (duże litery, różowy) + rok (czarny, pogrubiony) */}
         <h2 className="text-lg font-semibold">
           <span className="text-pink-500 uppercase font-bold">
             {weekStart.toLocaleString("pl-PL", { month: "long" })}
@@ -47,21 +37,20 @@ export default function WeekCalendar({
           </span>
         </h2>
 
-        {/* Strzałka → przejście na kolejny tydzień */}
         <button onClick={onNextWeek} className="text-lg font-bold">
           →
         </button>
       </div>
 
-      {/* Lista dni tygodnia (7 dni) */}
       <div className="flex justify-between gap-2">
         {days.map((day) => {
           const isSelected = day.toDateString() === selectedDate.toDateString();
-
-          // Zbieram wszystkie zadania przypisane do danego dnia
           const dayTasks = tasks.filter(
             (t) => new Date(t.date).toDateString() === day.toDateString()
           );
+
+          const weekday = day.toLocaleDateString("pl-PL", { weekday: "short" });
+          const dayNumber = day.getDate();
 
           return (
             <button
@@ -69,14 +58,16 @@ export default function WeekCalendar({
               onClick={() => onSelect(day)}
               className={`flex flex-col items-center w-full py-2 rounded-md transition border ${
                 isSelected
-                  ? "bg-pink-500 hover:bg-pink-600 text-white font-bold" // kliknięty dzień
-                  : "text-pink-500 hover:text-pink-600 font-bold text-xl" // reszta dni
+                  ? "bg-pink-500 hover:bg-pink-600 text-white font-bold"
+                  : "text-pink-500 hover:text-pink-600 font-bold text-xl"
               }`}
             >
-              {/* Dzień tygodnia i numer (np. pon. 3) */}
-              <span className="capitalize text-sm">{formatDay(day)}</span>
+              {/* Dzień tygodnia (np. "pon.") nad numerem dnia na małych ekranach */}
+              <div className="flex flex-col sm:flex-row items-center sm:gap-1 text-sm capitalize">
+                <span>{weekday}</span>
+                <span>{dayNumber}</span>
+              </div>
 
-              {/* Kropki – każda reprezentuje jedno zadanie w danym dniu */}
               {dayTasks.length > 0 && (
                 <div className="flex gap-1 mt-1 flex-wrap justify-center">
                   {dayTasks.map((t, i) => (
