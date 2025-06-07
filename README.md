@@ -46,6 +46,6 @@ Zadania można oznaczyć jako ukończone za pomocą checkboxa:
 
 ### 📅 Widok całego tygodnia z zadaniami
 Podsumowanie całego tygodnia z kolorowymi wskaźnikami:  
-![weekcalendar](./screenshots/weekcalendar.png)
+![weekcalendar](./screenshots/weekcalendar2.png)
 
 ---
