@@ -59,8 +59,8 @@ Aplikacja dostępna pod adresem:
 ### Widok całego tygodnia z zadaniami
 
 W tym widoku każdy dzień tygodnia ma przypisane kolorowe kropki, które odpowiadają zadaniom zaplanowanym na ten dzień.  
-🔸 **Kolor kropki odpowiada kolorowi zadania**, który wybierasz podczas jego tworzenia.  
-🔸 **Liczba kropek = liczba zadań** zaplanowanych na dany dzień.
+- **Kolor kropki odpowiada kolorowi zadania**, który wybierasz podczas jego tworzenia.  
+- **Liczba kropek = liczba zadań** zaplanowanych na dany dzień.
 
 <p align="center">
   <img src="./screenshots/weekcalendar2.png" alt="weekcalendar2" />
