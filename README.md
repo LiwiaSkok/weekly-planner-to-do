@@ -12,40 +12,40 @@ Aplikacja dostępna pod adresem:
 
 ---
 
-### 🏠 Ekran główny
-Widok kalendarza tygodniowego z oznaczeniami kolorystycznymi:  
+### Ekran główny
+
 ![home](./screenshots/home.png)
 
-### 🗓️ Widok z aktywnościami w ciągu dnia
-Zadania wyświetlane na osi czasu dla konkretnego dnia:  
+### Zadania wyświetlane na osi czasu dla konkretnego dnia:  
 ![home2](./screenshots/home2.png)
 
-### ➕ Dodawanie nowego zadania
-Formularz tworzenia nowego zadania:  
+### Formularz tworzenia nowego zadania:  
 ![addtask](./screenshots/addtask.png)
 
-### ⏱️ Własny czas trwania zadania – wybór
-Opcja niestandardowego ustawienia czasu trwania zadania:  
+### Opcja niestandardowego ustawienia czasu trwania zadania:  
 ![myowntime](./screenshots/myowntime.png)
 
-### ⏱️ Własny czas trwania zadania – ustawienie 6h 15min
-Dostosowanie długości zadania z dokładnością do 15 minut:  
+### Własny czas trwania zadania. Przykład: ustawienie 6h 15min
+
 ![myowntime2](./screenshots/myowntime2.png)
 
-### 🖊️ Edycja istniejącego zadania
-Szybka możliwość edytowania szczegółów zadania:  
+### Edycja istniejącego zadania
+
 ![edit](./screenshots/edit.png)
 
-### 📝 Formularz edycji zadania
-Pełny formularz edycji:  
+### Formularz edycji zadania
+
 ![edit2](./screenshots/edit2.png)
 
-### ✅ Zakończone zadanie
-Zadania można oznaczyć jako ukończone za pomocą checkboxa:  
+### Zadania można oznaczyć jako ukończone za pomocą checkboxa:  
 ![checkbox](./screenshots/checkbox.png)
 
-### 📅 Widok całego tygodnia z zadaniami
-Podsumowanie całego tygodnia z kolorowymi wskaźnikami:  
+### Widok całego tygodnia z zadaniami
+
+W tym widoku każdy dzień tygodnia ma przypisane kolorowe kropki, które odpowiadają zadaniom zaplanowanym na ten dzień.  
+🔸 **Kolor kropki odpowiada kolorowi zadania**, który wybierasz podczas jego tworzenia.  
+🔸 **Liczba kropek = liczba zadań** zaplanowanych na dany dzień.
+
 ![weekcalendar](./screenshots/weekcalendar2.png)
 
 ---
