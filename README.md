@@ -12,33 +12,49 @@ Aplikacja dostępna pod adresem:
 
 ---
 
-### Ekran główny
+## Podgląd aplikacji
 
-![home](./screenshots/home.png)
+
+
+### Ekran główny
+<p align="center">
+  <img src="./screenshots/home.png" alt="home" />
+</p>
 
 ### Zadania wyświetlane na osi czasu dla konkretnego dnia:  
-![home2](./screenshots/home2.png)
+<p align="center">
+  <img src="./screenshots/home2.png" alt="home2" />
+</p>
 
 ### Formularz tworzenia nowego zadania:  
-![addtask](./screenshots/addtask.png)
+<p align="center">
+  <img src="./screenshots/addtask.png" alt="addtask" />
+</p>
 
 ### Opcja niestandardowego ustawienia czasu trwania zadania:  
-![myowntime](./screenshots/myowntime.png)
+<p align="center">
+  <img src="./screenshots/myowntime.png" alt="myowntime" />
+</p>
 
 ### Własny czas trwania zadania. Przykład: ustawienie 6h 15min
-
-![myowntime2](./screenshots/myowntime2.png)
+<p align="center">
+  <img src="./screenshots/myowntime2.png" alt="myowntime2" />
+</p>
 
 ### Edycja istniejącego zadania
-
-![edit](./screenshots/edit.png)
+<p align="center">
+  <img src="./screenshots/edit.png" alt="edit" />
+</p>
 
 ### Formularz edycji zadania
-
-![edit2](./screenshots/edit2.png)
+<p align="center">
+  <img src="./screenshots/edit2.png" alt="edit2" />
+</p>
 
 ### Zadania można oznaczyć jako ukończone za pomocą checkboxa:  
-![checkbox](./screenshots/checkbox.png)
+<p align="center">
+  <img src="./screenshots/checkbox.png" alt="checkbox" />
+</p>
 
 ### Widok całego tygodnia z zadaniami
 
@@ -46,6 +62,7 @@ W tym widoku każdy dzień tygodnia ma przypisane kolorowe kropki, które odpowi
 🔸 **Kolor kropki odpowiada kolorowi zadania**, który wybierasz podczas jego tworzenia.  
 🔸 **Liczba kropek = liczba zadań** zaplanowanych na dany dzień.
 
-![weekcalendar](./screenshots/weekcalendar2.png)
+<p align="center">
+  <img src="./screenshots/weekcalendar2.png" alt="weekcalendar2" />
+</p>
 
----
