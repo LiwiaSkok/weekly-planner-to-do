@@ -18,7 +18,7 @@ Aplikacja dostępna pod adresem:
 
 ### Ekran główny
 <p align="center">
-  <img src="./screenshots/home.png" alt="home" />
+  <img src="./screenshots/home3.png" alt="home" />
 </p>
 
 ### Zadania wyświetlane na osi czasu dla konkretnego dnia:  
