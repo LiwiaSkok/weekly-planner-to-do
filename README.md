@@ -66,6 +66,8 @@ W tym widoku każdy dzień tygodnia ma przypisane kolorowe kropki, które odpowi
   <img src="./screenshots/weekcalendar2.png" alt="weekcalendar2" />
 </p>
 
+### Widok aplikacji na urządzeniu mobilnym
+
 <p align="center">
   <img src="./screenshots/homephone.png" alt="homephone" />
 </p>
